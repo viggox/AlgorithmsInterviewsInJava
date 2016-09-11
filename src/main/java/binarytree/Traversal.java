@@ -143,7 +143,7 @@ public class Traversal {
      * 方法1：使用两个栈
      * @param head
      */
-    public void posOrderUnRecur(Node head) {
+    public void posOrderUnRecur1(Node head) {
 
         System.out.println("pos-order: ");
 
@@ -177,6 +177,37 @@ public class Traversal {
 
     }
 
+    /**
+     * 后序遍历，非递归式
+     * 方法2：使用1个栈
+     * @param head
+     */
+    public void posOrderUnRecur2(Node head) {
 
+        System.out.println("pos-order: ");
+        if (head != null) {
+            Stack<Node> stack = new Stack<Node>();
+            stack.push(head);
+            //top is the top of stack, initialized with null;
+            Node top;
+            while (!stack.isEmpty()) {
+                //head的意义是最近一次弹出并打印的节点
+                //top的意义是栈顶节点
+                top = stack.peek();
+                if (top.left != null && head != top.left && head != top.right) {
+                    //top的左子树尚未被打印出来；
+                    stack.push(top.left);
+                } else if (top.right != null && head != top.right) {
+                    //top的右子树尚未被打印出来，不检查head != top.left是因为先push进top.left再push进top.right；
+                    stack.push(top.right);
+                } else {
+                    System.out.println(stack.pop().value + " ");
+                    head = top;
+                }
+            }
+        }
+
+        System.out.println(" ");
+    }
 
 }
