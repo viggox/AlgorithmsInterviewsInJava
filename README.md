@@ -1,2 +1,3 @@
-# AlogorithmInterviews
-My own practices of high-frequency data structure and algorithm exercises; 
+# AlgorithmsInterviews
+My own practices of high-frequency data structure and algorithms exercises; 
+Written in java;
